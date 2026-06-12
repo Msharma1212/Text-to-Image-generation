@@ -81,7 +81,7 @@ Perfect for developers, AI enthusiasts, artists, and researchers who want full c
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/realistic-vision-generator.git
+git clone https://github.com/Msharma1212/Text-to-Image-generation.git 
 
 cd realistic-vision-generator
 ```
