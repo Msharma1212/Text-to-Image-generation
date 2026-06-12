@@ -1,0 +1,242 @@
+:root {
+    --bg: #f4efe7;
+    --paper: #fffdf8;
+    --ink: #1f2a2c;
+    --muted: #6c7570;
+    --accent: #0f766e;
+    --accent-soft: #d7efe8;
+    --border: #dccfbe;
+    --shadow: 0 16px 40px rgba(75, 61, 42, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 30%),
+        linear-gradient(180deg, #f6efe4 0%, #f2f4ef 100%);
+}
+
+.shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0 48px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.hero-copy,
+.hero-card,
+.planner-form,
+.results-panel {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.hero-copy {
+    padding: 36px;
+}
+
+.hero-copy h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 5vw, 3.7rem);
+    line-height: 0.98;
+}
+
+.lede,
+.hero-card p,
+.results-head p,
+.card p,
+.empty-state p,
+.day-content p {
+    color: var(--muted);
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.hero-card {
+    padding: 28px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.chips span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.planner-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+}
+
+.planner-form {
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+.planner-form h2,
+.results-head h2,
+.itinerary h3 {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin: 16px 0 8px;
+    font-weight: 700;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    font: inherit;
+}
+
+input,
+select {
+    background: #fff;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+button {
+    margin-top: 20px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 118, 110, 0.2);
+}
+
+.results-panel {
+    padding: 24px;
+}
+
+.stat-grid,
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.stat-grid {
+    margin: 20px 0;
+}
+
+.stat-grid article,
+.card,
+.day-card,
+.empty-state {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #fff;
+}
+
+.stat-grid article {
+    padding: 18px;
+}
+
+.stat-grid span {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.stat-grid strong {
+    font-size: 1.2rem;
+}
+
+.card {
+    padding: 20px;
+}
+
+.card ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+.itinerary {
+    margin-top: 24px;
+}
+
+.day-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 18px;
+    padding: 18px;
+    margin-bottom: 14px;
+}
+
+.day-label {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.empty-state {
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 32px;
+}
+
+@media (max-width: 900px) {
+    .hero,
+    .planner-grid,
+    .stat-grid,
+    .cards,
+    .form-row,
+    .day-card {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-form {
+        position: static;
+    }
+}

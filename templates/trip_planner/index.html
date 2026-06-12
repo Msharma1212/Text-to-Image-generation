@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Trip Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='trip_planner.css') }}">
+</head>
+<body>
+    <main class="shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Travel smarter</p>
+                <h1>Plan a trip in minutes with a clean day-by-day itinerary.</h1>
+                <p class="lede">This planner turns a destination, travel style, and your interests into a simple schedule, budget estimate, and packing list.</p>
+            </div>
+            <div class="hero-card">
+                <p>Popular demo destinations</p>
+                <div class="chips">
+                    {% for destination in destinations %}
+                    <span>{{ destination.title() }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="planner-grid">
+            <form method="post" class="planner-form">
+                <h2>Build your trip</h2>
+
+                <label for="destination">Destination</label>
+                <input id="destination" name="destination" type="text" placeholder="Goa, Manali, Tokyo..." value="{{ form_data.destination }}">
+
+                <div class="form-row">
+                    <div>
+                        <label for="days">Days</label>
+                        <input id="days" name="days" type="number" min="1" max="10" value="{{ form_data.days }}">
+                    </div>
+                    <div>
+                        <label for="travelers">Travelers</label>
+                        <input id="travelers" name="travelers" type="number" min="1" max="12" value="{{ form_data.travelers }}">
+                    </div>
+                </div>
+
+                <label for="travel_style">Travel style</label>
+                <select id="travel_style" name="travel_style">
+                    <option value="budget" {% if form_data.travel_style == 'budget' %}selected{% endif %}>Budget</option>
+                    <option value="medium" {% if form_data.travel_style == 'medium' %}selected{% endif %}>Medium</option>
+                    <option value="luxury" {% if form_data.travel_style == 'luxury' %}selected{% endif %}>Luxury</option>
+                </select>
+
+                <label for="interests">Interests</label>
+                <input id="interests" name="interests" type="text" placeholder="food, nature, nightlife" value="{{ form_data.interests }}">
+
+                <button type="submit">Generate itinerary</button>
+            </form>
+
+            <section class="results-panel">
+                {% if planner %}
+                <div class="results-head">
+                    <p class="eyebrow">{{ planner.country }}</p>
+                    <h2>{{ planner.destination_name }}</h2>
+                    <p>{{ planner.vibe }}</p>
+                </div>
+
+                <div class="stat-grid">
+                    <article>
+                        <span>Total budget</span>
+                        <strong>INR {{ "{:,}".format(planner.budget.grand_total) }}</strong>
+                    </article>
+                    <article>
+                        <span>Daily estimate</span>
+                        <strong>INR {{ "{:,}".format(planner.budget.daily_total) }}</strong>
+                    </article>
+                    <article>
+                        <span>Trip length</span>
+                        <strong>{{ planner.days }} days</strong>
+                    </article>
+                    <article>
+                        <span>Travelers</span>
+                        <strong>{{ planner.travelers }}</strong>
+                    </article>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3>Weather note</h3>
+                        <p>{{ planner.weather }}</p>
+                        <p><strong>Backup idea:</strong> {{ planner.backup_plan }}</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Budget split</h3>
+                        <ul>
+                            <li>Hotel: INR {{ "{:,}".format(planner.budget.hotel) }}</li>
+                            <li>Food: INR {{ "{:,}".format(planner.budget.food) }}</li>
+                            <li>Transport: INR {{ "{:,}".format(planner.budget.transport) }}</li>
+                            <li>Activities: INR {{ "{:,}".format(planner.budget.activities) }}</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>Food to try</h3>
+                        <p>{{ planner.food_recommendations }}</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Packing list</h3>
+                        <ul>
+                            {% for item in planner.packing_list %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </article>
+                </div>
+
+                <section class="itinerary">
+                    <h3>Day-by-day itinerary</h3>
+                    {% for day in planner.itinerary %}
+                    <article class="day-card">
+                        <div class="day-label">{{ day.day }}</div>
+                        <div class="day-content">
+                            <p><strong>Morning:</strong> {{ day.morning }}</p>
+                            <p><strong>Afternoon:</strong> {{ day.afternoon }}</p>
+                            <p><strong>Evening:</strong> {{ day.evening }}</p>
+                            <p><strong>Tip:</strong> {{ day.budget_note }}</p>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </section>
+                {% else %}
+                <div class="empty-state">
+                    <h2>Generate your first plan</h2>
+                    <p>Try a destination like Goa, Manali, Dubai, Paris, or Tokyo and add interests such as food, nature, history, adventure, nightlife, or relaxation.</p>
+                </div>
+                {% endif %}
+            </section>
+        </section>
+    </main>
+</body>
+</html>
