@@ -339,4 +339,4 @@ Passionate about AI, Full-Stack Development, and Building Real-World Projects.
 
 This project is licensed under the MIT License.
 
-Feel free to use, modify, and distribute it according to the license terms.
+Feel free to use, modify, and distribute it according to the license terms...
