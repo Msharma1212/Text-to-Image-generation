@@ -275,3 +275,32 @@ if request.method == "POST":
             "Travel Style": travel_style.title(),
             "Estimated Budget": f"₹{budget['grand_total']:,}"
         },
+        
+        # Tips
+        "travel_tips": [
+            "Carry a valid ID proof.",
+            "Keep offline maps downloaded.",
+            "Start sightseeing early to avoid crowds.",
+            "Keep emergency cash with you.",
+            "Stay hydrated during your trip."
+        ]
+    }
+
+    form_data = {
+        "destination": destination_name,
+        "days": days,
+        "travelers": travelers,
+        "travel_style": travel_style,
+        "interests": ", ".join(interests),
+    }
+
+return render_template(
+    "trip_planner/index.html",
+    planner=planner,
+    form_data=form_data,
+    destinations=sorted(DESTINATIONS)
+)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
