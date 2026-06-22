@@ -202,4 +202,17 @@ def home():
         "interests": "food, nature",
     }
 
+if request.method == "POST":
+    destination_name = request.form.get("destination", "").strip()
+    days = parse_int(request.form.get("days"), 4, 1, 10)
+
+    travel_style = request.form.get("travel_style", "medium")
+    if travel_style not in {"budget", "medium", "luxury"}:
+        travel_style = "medium"
+
+    travelers = parse_int(request.form.get("travelers"), 2, 1, 12)
+    interests = split_interests(request.form.get("interests", ""))
+
+    destination = get_destination(destination_name)
+
 
