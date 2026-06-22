@@ -215,4 +215,27 @@ if request.method == "POST":
 
     destination = get_destination(destination_name)
 
+# Build planner data
+    itinerary = build_itinerary(
+        destination_name,
+        days,
+        interests,
+        travel_style
+    )
 
+    budget = build_budget(
+        destination_name,
+        days,
+        travelers,
+        travel_style
+    )
+
+    packing_list = build_packing_list(
+        destination_name,
+        interests
+    )
+
+    food_recommendations = build_food_recommendations(
+        destination_name
+    )
+    
