@@ -202,42 +202,4 @@ def home():
         "interests": "food, nature",
     }
 
-    if request.method == "POST":
-        destination_name = request.form.get("destination", "").strip()
-        days = parse_int(request.form.get("days"), 4, 1, 10)
-        travel_style = request.form.get("travel_style", "medium")
-        if travel_style not in {"budget", "medium", "luxury"}:
-            travel_style = "medium"
-        travelers = parse_int(request.form.get("travelers"), 2, 1, 12)
-        interests = split_interests(request.form.get("interests", ""))
-        destination = get_destination(destination_name)
-        budget = build_budget(destination_name, days, travelers, travel_style)
 
-        planner = {
-            "destination_name": destination_name.title() if destination_name else "Your Trip",
-            "country": destination.country,
-            "vibe": destination.vibe,
-            "weather": destination.weather,
-            "days": days,
-            "travelers": travelers,
-            "travel_style": travel_style.title(),
-            "itinerary": build_itinerary(destination_name, days, interests, travel_style),
-            "budget": budget,
-            "packing_list": build_packing_list(destination_name, interests),
-            "food_recommendations": build_food_recommendations(destination_name),
-            "backup_plan": destination.indoors[0],
-            "highlights": destination.highlights[:4],
-        }
-        form_data = {
-            "destination": destination_name,
-            "days": days,
-            "travelers": travelers,
-            "travel_style": travel_style,
-            "interests": ", ".join(interests),
-        }
-
-    return render_template("trip_planner/index.html", planner=planner, form_data=form_data, destinations=sorted(DESTINATIONS))
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
