@@ -239,3 +239,39 @@ if request.method == "POST":
         destination_name
     )
     
+    planner = {
+        "destination_name": destination_name.title() if destination_name else "Your Trip",
+        "country": destination.country,
+        "vibe": destination.vibe,
+        "weather": destination.weather,
+
+        "days": days,
+        "travelers": travelers,
+        "travel_style": travel_style.title(),
+
+        # Main Sections
+        "itinerary": itinerary,
+        "budget": budget,
+        "packing_list": packing_list,
+
+        # Food
+        "food_recommendations": food_recommendations,
+
+        # Attractions
+        "highlights": destination.highlights,
+        "backup_plan": destination.indoors[0],
+
+        # Extra Information
+        "must_try_foods": destination.foods,
+        "indoor_activities": destination.indoors,
+        "outdoor_activities": destination.outdoors,
+
+        # Quick Stats
+        "trip_summary": {
+            "Destination": destination_name.title(),
+            "Country": destination.country,
+            "Duration": f"{days} Days",
+            "Travelers": travelers,
+            "Travel Style": travel_style.title(),
+            "Estimated Budget": f"₹{budget['grand_total']:,}"
+        },
