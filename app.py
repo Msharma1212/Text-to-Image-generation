@@ -296,3 +296,14 @@ copy_path_button = ttk.Button(
     style='Copy.TButton'
 )
 copy_path_button.pack(pady=(0, 12))
+
+# --- output image panel (better visual spacing) ---
+output_panel = ttk.Label(
+    app,
+    text="Generated Image Preview",
+    style='ImagePanel.TLabel',
+    compound="image",
+    anchor="center",
+    font=("Arial", 10, "bold")
+)
+output_panel.pack(pady=15, padx=25, expand=True, fill='both')
