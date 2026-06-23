@@ -251,3 +251,12 @@ ttk.Entry(
     width=55,
     font=("Arial", 11)
 ).pack(padx=25, pady=(0, 10))
+
+# Image upload section
+browse_button = ttk.Button(
+    app,
+    text="📁 Upload Base Image (Optional)",
+    command=browse_image,
+    style='Generate.TButton'
+)
+browse_button.pack(pady=8)
