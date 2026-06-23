@@ -277,3 +277,22 @@ ttk.Label(
     foreground=ACCENT_BLUE,
     font=("Arial", 11, "italic")
 ).pack(pady=10)
+
+# Output path display (clean box feel)
+ttk.Label(
+    app,
+    textvariable=output_path_var,
+    wraplength=600,
+    font=("Arial", 9),
+    foreground="gray"
+).pack(pady=(0, 10))
+
+
+# Copy path button
+copy_path_button = ttk.Button(
+    app,
+    text="📋 Copy Output Path",
+    command=copy_path_to_clipboard,
+    style='Copy.TButton'
+)
+copy_path_button.pack(pady=(0, 12))
