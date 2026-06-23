@@ -307,3 +307,25 @@ output_panel = ttk.Label(
     font=("Arial", 10, "bold")
 )
 output_panel.pack(pady=15, padx=25, expand=True, fill='both')
+
+# Download button (primary action highlight)
+download_button = ttk.Button(
+    app,
+    text="⬇ Download Image",
+    command=download_image,
+    style='Download.TButton'
+)
+download_button.pack(pady=15)
+
+
+# Footer hint (optional but professional feel)
+ttk.Label(
+    app,
+    text="Tip: Better prompt = better AI results ✨",
+    font=("Arial", 9, "italic"),
+    foreground="gray"
+).pack(pady=(0, 10))
+
+
+# Start app
+app.mainloop()
