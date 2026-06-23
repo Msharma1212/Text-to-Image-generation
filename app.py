@@ -260,3 +260,12 @@ browse_button = ttk.Button(
     style='Generate.TButton'
 )
 browse_button.pack(pady=8)
+
+# Generate button (main action)
+generate_button = ttk.Button(
+    app,
+    text="🚀 Generate Image",
+    command=generate_image,
+    style='Generate.TButton'
+)
+generate_button.pack(pady=5)
