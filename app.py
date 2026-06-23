@@ -269,3 +269,11 @@ generate_button = ttk.Button(
     style='Generate.TButton'
 )
 generate_button.pack(pady=5)
+
+# Progress / status
+ttk.Label(
+    app,
+    textvariable=progress_var,
+    foreground=ACCENT_BLUE,
+    font=("Arial", 11, "italic")
+).pack(pady=10)
