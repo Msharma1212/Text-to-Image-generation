@@ -237,33 +237,17 @@ def copy_path_to_clipboard():
         messagebox.showinfo("No Path", "No output path available to copy yet.")
 
 
-# ---------- layout ----------
-ttk.Label(app, text="Enter Prompt:", font=("Arial", 11)).pack(pady=(20,5))
-ttk.Entry(app, textvariable=prompt_var, width=50, font=("Arial", 11)).pack(padx=20)
+# ---------- layout (UPDATED CLEAN UI) ----------
 
-# Store button references globally
-browse_button = ttk.Button(app, text="Upload Base Image (optional)", command=browse_image)
-browse_button.pack(pady=10)
+ttk.Label(
+    app,
+    text="Enter Prompt:",
+    font=("Arial", 12, "bold")
+).pack(pady=(20, 5))
 
-generate_button = ttk.Button(app, text="Generate Image", command=generate_image, style='Generate.TButton')
-generate_button.pack(pady=5)
-
-ttk.Label(app, textvariable=progress_var, foreground=ACCENT_BLUE, font=("Arial", 11, "italic")).pack(pady=10)
-ttk.Label(app, textvariable=output_path_var, wraplength=600, font=("Arial", 9)).pack(pady=(0,5))
-
-copy_path_button = ttk.Button(app, text="Copy output path", command=copy_path_to_clipboard, style='Copy.TButton')
-copy_path_button.pack(pady=(0,10))
-
-# --- output image panel ---
-output_panel   = ttk.Label(app, text="Generated Image",
-                           style='ImagePanel.TLabel',
-                           compound="image"
-                           )
-output_panel.pack(pady=10, padx=20, expand=True, fill='both')
-
-
-download_button = ttk.Button(app, text="Download Image", command=download_image, style='Download.TButton')
-download_button.pack(pady=15)
-
-# Start the Tkinter event loop
-app.mainloop()
+ttk.Entry(
+    app,
+    textvariable=prompt_var,
+    width=55,
+    font=("Arial", 11)
+).pack(padx=25, pady=(0, 10))
