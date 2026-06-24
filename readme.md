@@ -327,16 +327,22 @@ If you find this project useful:
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-**Mayank Sharma**
+## Mayank Sharma
 
-Passionate about AI, Full-Stack Development, and Building Real-World Projects.
+AI Engineer | Full-Stack Developer | Enterprise Software Builder
+
+Dedicated to developing intelligent, scalable, and production-ready software solutions that bridge Artificial Intelligence with modern enterprise applications.
+
+Thank you for exploring this project. Your feedback, contributions, and support are always appreciated.
 
 ---
 
-## 📄 License
+# 📄 License
 
-This project is licensed under the MIT License.
+Licensed under the **MIT License**.
 
-Feel free to use, modify, and distribute it according to the license terms...
+You are welcome to use, modify, and distribute this project in accordance with the terms of the MIT License.
+
+See the **LICENSE** file for more information.
